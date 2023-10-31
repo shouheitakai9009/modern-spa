@@ -1,0 +1,14 @@
+{
+  "name": "einikki",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "cd frontend && yarn dev"
+  }
+}
