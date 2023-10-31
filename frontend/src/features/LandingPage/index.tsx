@@ -1,9 +1,12 @@
 import { Box, Button, Em, Flex, Heading, Text } from "@radix-ui/themes";
-import { Github } from "lucide-react";
+import { Github, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useFetchHello } from "../../hooks/queries/useFetchHello";
+import { Suspense } from "react";
 
 export const LandingPage = () => {
   const navigate = useNavigate();
+  const { data } = useFetchHello();
   return (
     <Box width="100%">
       <header
@@ -36,6 +39,13 @@ export const LandingPage = () => {
           </Flex>
         </Flex>
       </header>
+      <main>
+        <Suspense fallback={<Loader2 />}>
+          <Flex align="center" justify="center" py="9">
+            <Heading color="purple">{data}</Heading>
+          </Flex>
+        </Suspense>
+      </main>
     </Box>
   );
 };
