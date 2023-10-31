@@ -1,5 +1,5 @@
 {
-  "name": "einikki",
+  "name": "modern-spa",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -9,6 +9,8 @@
     "frontend"
   ],
   "scripts": {
-    "dev": "cd frontend && yarn dev"
+    "dev": "cd frontend && yarn dev",
+    "server": "cd backend && yarn start",
+    "server:watch": "cd backend && yarn start:dev"
   }
 }
