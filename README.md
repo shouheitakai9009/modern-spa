@@ -12,8 +12,14 @@ Setup is so easy, because I accept a monorepo environment.
 yarn install
 ```
 
-2. Run a modern single-page application
+2. Run a frontend using vite
 
 ```
 yarn dev
+```
+
+3. Open new terminal and run a backend with NestJS
+
+```
+yarn server
 ```
