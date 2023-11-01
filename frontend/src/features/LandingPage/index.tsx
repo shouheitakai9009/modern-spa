@@ -2,11 +2,19 @@ import { Box, Button, Em, Flex, Heading, Text } from "@radix-ui/themes";
 import { Github, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFetchHello } from "../../hooks/queries/useFetchHello";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { globalState } from "../../recoil/globalState/atom";
 
 export const LandingPage = () => {
   const navigate = useNavigate();
   const { data } = useFetchHello();
+  const [hello, setHello] = useRecoilState(globalState.hello);
+
+  useEffect(() => {
+    setHello({ id: 0, message: "Hello Recoil!" });
+  }, []);
+
   return (
     <Box width="100%">
       <header
@@ -42,7 +50,12 @@ export const LandingPage = () => {
       <main>
         <Suspense fallback={<Loader2 />}>
           <Flex align="center" justify="center" py="9">
-            <Heading color="purple">{data}</Heading>
+            <Heading color="purple">RQ: {data}</Heading>
+          </Flex>
+          <Flex align="center" justify="center" py="9">
+            <Heading color="purple">
+              Recoil: {hello !== null && hello.message}
+            </Heading>
           </Flex>
         </Suspense>
       </main>

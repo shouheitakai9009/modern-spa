@@ -18,6 +18,7 @@
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.17.0",
+    "recoil": "^0.7.7",
     "yarn": "^1.22.19"
   },
   "devDependencies": {

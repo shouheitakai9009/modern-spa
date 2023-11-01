@@ -5,6 +5,7 @@ import { AnythingPage } from "./features/AnythingPage";
 import { LandingPage } from "./features/LandingPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { RecoilRoot } from "recoil";
 
 function App() {
   const queryClient = new QueryClient();
@@ -16,17 +17,19 @@ function App() {
       radius="large"
       appearance="light"
     >
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LandingLayout />}>
-              <Route path="/" index element={<LandingPage />} />
-              <Route path="/anything" element={<AnythingPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-        {import.meta.env.DEV && <ReactQueryDevtools />}
-      </QueryClientProvider>
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LandingLayout />}>
+                <Route path="/" index element={<LandingPage />} />
+                <Route path="/anything" element={<AnythingPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+          {import.meta.env.DEV && <ReactQueryDevtools />}
+        </QueryClientProvider>
+      </RecoilRoot>
     </Theme>
   );
 }
