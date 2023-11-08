@@ -9,4 +9,13 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('books')
+  books() {
+    return [
+      { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald' },
+      { title: 'The DaVinci Code', author: 'Dan Brown' },
+      { title: 'Angels & Demons', author: 'Dan Brown' },
+    ];
+  }
 }

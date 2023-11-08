@@ -41,7 +41,7 @@ export const LandingPage = () => {
                 Potents
               </Button>
             </Link>
-            <Button size="4" onClick={() => navigate("anything")}>
+            <Button size="4" onClick={() => navigate("test")}>
               今すぐ試す
             </Button>
           </Flex>
