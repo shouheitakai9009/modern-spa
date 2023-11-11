@@ -1,29 +1,21 @@
-# Modern frontend and backend template
+# Modern SPA boilerplate
 
-This template provides a modern single-page application for starting build-environment easier.
+**This boilerplate provides the best developing experience because it is easily set up, quickly builds UI components, and includes server-side and front-side that is written with Javascript.**
 
-## Installation
+![Header image](frontend/public/images/readme_header.png)
 
-Setup is so easy, because I accept a monorepo environment.
+# Installation
 
-1. Install package dependencies.
+## 1. Use this boilerplate
+Visit this repository and click `Use this template` button.
+https://github.com/shouheitakai9009/modern-spa
 
-```
-yarn install
-```
 
-2. Run a frontend using vite
+## 2. Start on your localhost
+1. Open terminal and move your directory and type this command `yarn install`
+2. type this command and start with vite `yarn dev`
+3. type this command and start backend server `yarn server`
 
-```
-yarn dev
-```
-
-3. Open new terminal and run a backend with NestJS
-
-```
-yarn server
-```
-
-## Memo
-
-I'd like to add packages which are Vitest and Storybook
+## 3. Let's start developing !!
+You finally got everything you need to start developing.
+Enjoy your development life!!
