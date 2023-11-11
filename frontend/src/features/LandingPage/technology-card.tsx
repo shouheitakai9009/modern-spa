@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/common/Button";
 import {
   Card,
   CardHeader,
@@ -6,11 +6,11 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
+} from "@/components/common/Card";
 import { cn } from "@/utils";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/common/Badge";
 
 export type TechnologyCardType = {
   name: string;

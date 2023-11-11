@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LandingLayout } from "./components/LandingLayout";
+import { LandingLayout } from "./components/layout/landing";
 import { LandingPage } from "./features/LandingPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";

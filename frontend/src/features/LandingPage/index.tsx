@@ -1,19 +1,19 @@
 import { Github } from "lucide-react";
 import { Link } from "react-router-dom";
-import { buttonVariants } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
-import { Heading } from "@/components/ui/heading";
+import { buttonVariants } from "@/components/common/Button";
+import { Text } from "@/components/common/Text";
+import { Heading } from "@/components/common/Heading";
 import { cn } from "@/utils";
-import { Container } from "@/components/ui/container";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
+import { Container } from "@/components/common/Container";
+import { Switch } from "@/components/common/Switch";
+import { Label } from "@/components/common/Label";
 import { useId, useRef } from "react";
 import { useTheme } from "@/components/theme-provider";
 import { TechnologyCard } from "./technology-card";
 import { Variants, motion, useInView } from "framer-motion";
 import TypingAnimation from "@/components/animations/typing";
 import { technologies } from "./technologies";
-import { InlineCode } from "@/components/ui/inline-code";
+import { InlineCode } from "@/components/common/InlineCode";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -57,7 +57,7 @@ export const LandingPage = () => {
         </div>
         {/* First view area */}
         <div className={cn("flex justify-center items-center flex-col h-full")}>
-          <Heading as="h1" className="text-white">
+          <Heading as="h1" className="text-white mb-4">
             <TypingAnimation text="Modern SPA boilerplate" />
           </Heading>
           <Text className="text-center text-white text-lg">
@@ -85,11 +85,11 @@ export const LandingPage = () => {
           </section>
         </div>
       </header>
-      <article className="flex flex-col items-center pt-20 px-8 bg-secondary">
+      <article className="flex flex-col items-center pt-20 pb-20 px-8 bg-secondary">
         {/* Builing user interface faster */}
         <Container>
           <Heading as="h1" className="mb-8 text-primary">
-            Faster building UI than "anywhere"
+            Faster building UI than all libraries
           </Heading>
           <div className="flex flex-col md:!flex-row">
             <img
@@ -179,24 +179,23 @@ export const LandingPage = () => {
             </Heading>
             <Text className="text-lg">
               Visit this repository and click "Use this template" button.
+              <br />
+              <Link to="https://github.com/shouheitakai9009/modern-spa">
+                <Text className="text-lg" isLink>
+                  https://github.com/shouheitakai9009/modern-spa
+                </Text>
+              </Link>
             </Text>
-            <Link to="https://github.com/shouheitakai9009/modern-spa">
-              <Text className="text-lg" isLink>
-                https://github.com/shouheitakai9009/modern-spa
-              </Text>
-            </Link>
             <Heading as="h3" className="mt-8 mb-4">
               2. Start on your localhost
             </Heading>
             <Text className="text-lg">
               Open terminal and move your directory and type this command
               <InlineCode>yarn install</InlineCode>
-            </Text>
-            <Text className="text-lg">
+              <br />
               After installing, type this command and start with vite
               <InlineCode>yarn dev</InlineCode>
-            </Text>
-            <Text className="text-lg">
+              <br />
               After installing, type this command and start backend server
               <InlineCode>yarn server</InlineCode>
             </Text>
@@ -216,38 +215,61 @@ export const LandingPage = () => {
           </Heading>
           <div>
             <Heading as="h3" className="mb-4">
-              1. Use this boilerplate
+              1. Design the app you wanna make
             </Heading>
             <Text className="text-lg">
-              Visit this repository and click "Use this template" button.
-            </Text>
-            <Link to="https://github.com/shouheitakai9009/modern-spa">
-              <Text className="text-lg" isLink>
-                https://github.com/shouheitakai9009/modern-spa
-              </Text>
-            </Link>
-            <Heading as="h3" className="mt-8 mb-4">
-              2. Start on your localhost
-            </Heading>
-            <Text className="text-lg">
-              Open terminal and move your directory and type this command
-              <InlineCode>yarn install</InlineCode>
-            </Text>
-            <Text className="text-lg">
-              After installing, type this command and start with vite
-              <InlineCode>yarn dev</InlineCode>
-            </Text>
-            <Text className="text-lg">
-              After installing, type this command and start backend server
-              <InlineCode>yarn server</InlineCode>
-            </Text>
-            <Heading as="h3" className="mt-8 mb-4">
-              3. Let's start developing !!
-            </Heading>
-            <Text className="text-lg">
-              You finally got everything you need to start developing.
+              First of all, Let's start to create new page to the below
+              <InlineCode>src/features</InlineCode>
               <br />
-              Enjoy your development life!!
+              Next, Realize the idea in your head using
+              <InlineCode>@shadcn/ui</InlineCode>
+              <br />
+              If I make what it is, I would installed a Menu Bar component using
+              this command
+              <InlineCode>npx shadcn-ui@latest add menubar</InlineCode>
+              <br />
+            </Text>
+            <Heading as="h3" className="mt-8 mb-4">
+              2. Define the schema of database
+            </Heading>
+            <Text className="text-lg">
+              First of all, Confirm installed mysql either using{" "}
+              <InlineCode>mysql --version</InlineCode>
+              <br />
+              If you don't have mysql, you should install mysql using{" "}
+              <InlineCode>brew install mysql@8.1</InlineCode>, after that start
+              on mysql <InlineCode>mysql.server start</InlineCode>
+              <br />
+              Next, Create database with a database management tool like
+              DBeaver.
+              <br />
+              Update the database connection information to the below
+              <InlineCode>
+                DATABASE_URL="mysql://user:password@localhost:5432/your-database?schema=public"
+              </InlineCode>{" "}
+              on <InlineCode>backend/.env</InlineCode>
+              <br />
+              Let's define the schema of database using Prisma.
+              <InlineCode>backend/prisma/schema.prisma</InlineCode>
+              <br />
+              Type this command on backend directory{" "}
+              <InlineCode>
+                npx prisma migrate dev --name your_favorite_word
+              </InlineCode>
+              <br />
+            </Text>
+            <Heading as="h3" className="mt-8 mb-4">
+              3. Create the first API
+            </Heading>
+            <Text className="text-lg">
+              Let we watch <InlineCode>backend/app.controller.ts</InlineCode>
+              <br />
+              This is the endpoint routes of the above{" "}
+              <InlineCode>frontend/src/apis/index.ts</InlineCode>.<br />
+              Next, Type this command{" "}
+              <InlineCode>
+                npx nest g controller your_defined_table_name{" "}
+              </InlineCode>
             </Text>
           </div>
         </Container>
