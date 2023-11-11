@@ -1,5 +1,6 @@
 import { cn } from "@/utils";
 import { PropsWithChildren } from "react";
+import { HTMLMotionProps, motion } from "framer-motion";
 
 const SIZE = {
   sm: "sm:w-full",
@@ -8,8 +9,7 @@ const SIZE = {
   xl: "xl:w-[1080px]",
 };
 
-interface ContainerProps
-  extends PropsWithChildren<React.HTMLAttributes<HTMLDivElement>> {}
+interface ContainerProps extends PropsWithChildren<HTMLMotionProps<"div">> {}
 
 export const Container = ({
   children,
@@ -19,8 +19,14 @@ export const Container = ({
   const styledSize = Object.values(SIZE).join(" ");
 
   return (
-    <div className={cn(styledSize, className)} {...props}>
+    <motion.div
+      className={cn(styledSize, className)}
+      initial={{ opacity: 0, translateX: -100 }}
+      whileInView={{ opacity: 1, translateX: 0 }}
+      transition={{ duration: 1 }}
+      {...props}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };

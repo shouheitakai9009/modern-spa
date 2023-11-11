@@ -5,21 +5,30 @@ import { Text } from "@/components/ui/text";
 import { Heading } from "@/components/ui/heading";
 import { cn } from "@/utils";
 import { Container } from "@/components/ui/container";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { useId } from "react";
+import { useId, useRef } from "react";
 import { useTheme } from "@/components/theme-provider";
+import { TechnologyCard } from "./technology-card";
+import { Variants, motion, useInView } from "framer-motion";
+import TypingAnimation from "@/components/animations/typing";
+import { technologies } from "./technologies";
+import { InlineCode } from "@/components/ui/inline-code";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // 子要素間の遅延時間
+    },
+  },
+};
 
 export const LandingPage = () => {
   const { setTheme } = useTheme();
+  const technologyRef = useRef(null);
+  const isInViewTechnology = useInView(technologyRef);
   const darkModeId = useId();
 
   const onChangeDarkMode = (checked: boolean) => {
@@ -49,14 +58,17 @@ export const LandingPage = () => {
         {/* First view area */}
         <div className={cn("flex justify-center items-center flex-col h-full")}>
           <Heading as="h1" className="text-white">
-            Modern SPA boilerplate
+            <TypingAnimation text="Modern SPA boilerplate" />
           </Heading>
-          <Text className="text-center text-white">
-            This is the boilerplate that is a super practical and super fast
-            development boilerplate for Javascripter.
-            <br />
-            you will never get confused configuration using frontend and backend
-            because the boilerplate is monorepo for javascripter.
+          <Text className="text-center text-white text-lg">
+            <TypingAnimation
+              delay={0.01}
+              text="This is the boilerplate that is a super practical and super fast development boilerplate for Javascripter."
+            />
+            <TypingAnimation
+              delay={0.01}
+              text="you will never get confused configuration using frontend and backend because the boilerplate is monorepo for javascripter."
+            />
           </Text>
           <section className="mt-20">
             <Link
@@ -73,8 +85,8 @@ export const LandingPage = () => {
           </section>
         </div>
       </header>
-      {/* Builing user interface faster */}
-      <article className="flex flex-col items-center pt-20 bg-background px-8">
+      <article className="flex flex-col items-center pt-20 px-8 bg-secondary">
+        {/* Builing user interface faster */}
         <Container>
           <Heading as="h1" className="mb-8 text-primary">
             Faster building UI than "anywhere"
@@ -96,16 +108,19 @@ export const LandingPage = () => {
                 <Heading as="h2" className="mt-8">
                   Many Components
                 </Heading>
-                <Text className="text-md">
-                  多種多様なビルトインコンポーネントが用意されているため、開発者は基本的な要素から複雑な機能まで迅速に組み立てることができます。
+                <Text className="text-lg">
+                  You can build a complex feature or a basic component quickly
+                  because @shadcn/ui provides built-in components many kind.
                 </Text>
               </section>
               <section>
                 <Heading as="h2" className="mt-8">
                   Customize Yourself
                 </Heading>
-                <Text className="text-md">
-                  カスタムコンポーネントを簡単に追加し、既存のコンポーネントを調整することで、ユーザー固有のニーズに合わせたデザインが可能です。
+                <Text className="text-lg">
+                  You can design for specific users because easily install any
+                  component. For example, you can install Card component after
+                  typing "npx shadcn-ui@latest" add card on your terminal.
                 </Text>
               </section>
               <div className="flex justify-center mt-6">
@@ -113,8 +128,8 @@ export const LandingPage = () => {
                   to="https://ui.shadcn.com/"
                   target="_blank"
                   className={cn(
-                    "",
-                    buttonVariants({ size: "lg", variant: "secondary" })
+                    "dark:text-white",
+                    buttonVariants({ size: "lg", variant: "outline" })
                   )}
                 >
                   View @shadcn/ui Documentation
@@ -124,100 +139,118 @@ export const LandingPage = () => {
           </div>
         </Container>
         {/* Abount fullstack javascripter */}
-        <div className="w-full flex flex-col md:items-center">
+        <div
+          className="w-full flex flex-col md:items-center"
+          ref={technologyRef}
+        >
           <Container>
             <Heading as="h1" className="mt-32 mb-8 text-primary">
               Fullstack Javascripter
             </Heading>
           </Container>
-          <div className="flex flex-col md:gap-2 md:!flex-row">
-            <Card className="sm:w-full md:max-w-[350px] mb-4">
-              <CardHeader>
-                <CardTitle>Prisma</CardTitle>
-                <CardDescription className="h-20">
-                  You can use quickly and easily Prisma ORM with TypeScript.
-                  <br />
-                  Let's define schemas on backend/prisma/schema.prisma right
-                  now.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <img
-                  src="/images/part_prisma.png"
-                  className="w-full object-cover aspect-square rounded"
+          {isInViewTechnology && (
+            <motion.div
+              className="flex flex-col flex-wrap justify-center md:gap-3 md:!flex-row"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {technologies.map((technology, key) => (
+                <TechnologyCard
+                  key={key}
+                  name={technology.name}
+                  badge={technology.badge}
+                  image={technology.image}
+                  link={technology.link}
+                  description={technology.description}
                 />
-              </CardContent>
-              <CardFooter className="flex items-center">
-                <Link
-                  to="https://www.prisma.io/docs/guides"
-                  target="_blank"
-                  className={cn(
-                    "w-full",
-                    buttonVariants({ size: "lg", variant: "secondary" })
-                  )}
-                >
-                  View Documentation
-                </Link>
-              </CardFooter>
-            </Card>
-            <Card className="sm:w-full md:max-w-[350px] mb-4">
-              <CardHeader>
-                <CardTitle>NestJS</CardTitle>
-                <CardDescription className="h-20">
-                  This is the framework that is good compatibility with Prisma
-                  and made by Node.js You can write a safe code more because
-                  NestJS supported Typescript.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <img
-                  src="/images/part_nestjs.png"
-                  className="w-full object-cover aspect-square rounded"
-                />
-              </CardContent>
-              <CardFooter className="flex items-center">
-                <Link
-                  to="https://nestjs.com/"
-                  target="_blank"
-                  className={cn(
-                    "w-full",
-                    buttonVariants({ size: "lg", variant: "secondary" })
-                  )}
-                >
-                  View Documentation
-                </Link>
-              </CardFooter>
-            </Card>
-            <Card className="sm:w-full md:max-w-[350px] mb-4">
-              <CardHeader>
-                <CardTitle>Monorepo</CardTitle>
-                <CardDescription className="h-20">
-                  You don't need to build a difficult environment because this
-                  repository apply mono-repo. You can start developing frontend
-                  and backend quickly.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <img
-                  src="/images/part_monorepo.png"
-                  className="w-full object-cover aspect-square rounded"
-                />
-              </CardContent>
-              <CardFooter className="flex items-center">
-                <Link
-                  to="https://github.com/shouheitakai9009/modern-spa/blob/main/package.json"
-                  target="_blank"
-                  className={cn(
-                    "w-full",
-                    buttonVariants({ size: "lg", variant: "secondary" })
-                  )}
-                >
-                  View Documentation
-                </Link>
-              </CardFooter>
-            </Card>
-          </div>
+              ))}
+            </motion.div>
+          )}
         </div>
+        {/* Installation */}
+        <Container>
+          <Heading as="h1" className="mt-32 mb-8 text-primary">
+            Installation
+          </Heading>
+          <div>
+            <Heading as="h3" className="mb-4">
+              1. Use this boilerplate
+            </Heading>
+            <Text className="text-lg">
+              Visit this repository and click "Use this template" button.
+            </Text>
+            <Link to="https://github.com/shouheitakai9009/modern-spa">
+              <Text className="text-lg" isLink>
+                https://github.com/shouheitakai9009/modern-spa
+              </Text>
+            </Link>
+            <Heading as="h3" className="mt-8 mb-4">
+              2. Start on your localhost
+            </Heading>
+            <Text className="text-lg">
+              Open terminal and move your directory and type this command
+              <InlineCode>yarn install</InlineCode>
+            </Text>
+            <Text className="text-lg">
+              After installing, type this command and start with vite
+              <InlineCode>yarn dev</InlineCode>
+            </Text>
+            <Text className="text-lg">
+              After installing, type this command and start backend server
+              <InlineCode>yarn server</InlineCode>
+            </Text>
+            <Heading as="h3" className="mt-8 mb-4">
+              3. Let's start developing !!
+            </Heading>
+            <Text className="text-lg">
+              You finally got everything you need to start developing.
+              <br />
+              Enjoy your development life!!
+            </Text>
+          </div>
+        </Container>
+        <Container>
+          <Heading as="h1" className="mt-32 mb-8 text-primary">
+            First customize you should do
+          </Heading>
+          <div>
+            <Heading as="h3" className="mb-4">
+              1. Use this boilerplate
+            </Heading>
+            <Text className="text-lg">
+              Visit this repository and click "Use this template" button.
+            </Text>
+            <Link to="https://github.com/shouheitakai9009/modern-spa">
+              <Text className="text-lg" isLink>
+                https://github.com/shouheitakai9009/modern-spa
+              </Text>
+            </Link>
+            <Heading as="h3" className="mt-8 mb-4">
+              2. Start on your localhost
+            </Heading>
+            <Text className="text-lg">
+              Open terminal and move your directory and type this command
+              <InlineCode>yarn install</InlineCode>
+            </Text>
+            <Text className="text-lg">
+              After installing, type this command and start with vite
+              <InlineCode>yarn dev</InlineCode>
+            </Text>
+            <Text className="text-lg">
+              After installing, type this command and start backend server
+              <InlineCode>yarn server</InlineCode>
+            </Text>
+            <Heading as="h3" className="mt-8 mb-4">
+              3. Let's start developing !!
+            </Heading>
+            <Text className="text-lg">
+              You finally got everything you need to start developing.
+              <br />
+              Enjoy your development life!!
+            </Text>
+          </div>
+        </Container>
       </article>
     </>
   );
