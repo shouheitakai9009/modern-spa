@@ -57,7 +57,7 @@ export const LandingPage = () => {
         </div>
         {/* First view area */}
         <div className={cn("flex justify-center items-center flex-col h-full")}>
-          <Heading as="h1" className="text-white mb-4">
+          <Heading as="h1" className="text-white mb-4 !text-7xl">
             <TypingAnimation text="Modern SPA boilerplate" />
           </Heading>
           <Text className="text-center text-white text-lg">
