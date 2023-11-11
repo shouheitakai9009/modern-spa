@@ -41,7 +41,7 @@ export const LandingPage = () => {
   return (
     <>
       {/* Setting dark mode */}
-      <header className="h-[600px] px-6 bg-gradient-to-tr from-orange-600 to-purple-500">
+      <header className="h-[100vh] md:h-[600px] px-6 bg-gradient-to-tr from-orange-600 to-purple-500">
         <div className="h-20 flex items-center justify-between">
           <Github color="white" size="40" />
           <div className="flex items-center">
@@ -169,46 +169,48 @@ export const LandingPage = () => {
           )}
         </div>
         {/* Installation */}
-        <Container>
-          <Heading as="h1" className="mt-32 mb-8 text-primary">
-            Installation
-          </Heading>
-          <div>
-            <Heading as="h3" className="mb-4">
-              1. Use this boilerplate
+        <div className="w-full flex flex-col md:items-center">
+          <Container>
+            <Heading as="h1" className="mt-32 mb-8 text-primary">
+              Installation
             </Heading>
-            <Text className="text-lg">
-              Visit this repository and click "Use this template" button.
-              <br />
-              <Link to="https://github.com/shouheitakai9009/modern-spa">
-                <Text className="text-lg" isLink>
-                  https://github.com/shouheitakai9009/modern-spa
-                </Text>
-              </Link>
-            </Text>
-            <Heading as="h3" className="mt-8 mb-4">
-              2. Start on your localhost
-            </Heading>
-            <Text className="text-lg">
-              Open terminal and move your directory and type this command
-              <InlineCode>yarn install</InlineCode>
-              <br />
-              After installing, type this command and start with vite
-              <InlineCode>yarn dev</InlineCode>
-              <br />
-              After installing, type this command and start backend server
-              <InlineCode>yarn server</InlineCode>
-            </Text>
-            <Heading as="h3" className="mt-8 mb-4">
-              3. Let's start developing !!
-            </Heading>
-            <Text className="text-lg">
-              You finally got everything you need to start developing.
-              <br />
-              Enjoy your development life!!
-            </Text>
-          </div>
-        </Container>
+            <div>
+              <Heading as="h3" className="mb-4">
+                1. Use this boilerplate
+              </Heading>
+              <Text className="text-lg">
+                Visit this repository and click "Use this template" button.
+                <br />
+                <Link to="https://github.com/shouheitakai9009/modern-spa">
+                  <Text className="text-lg" isLink>
+                    https://github.com/shouheitakai9009/modern-spa
+                  </Text>
+                </Link>
+              </Text>
+              <Heading as="h3" className="mt-8 mb-4">
+                2. Start on your localhost
+              </Heading>
+              <Text className="text-lg">
+                Open terminal and move your directory and type this command
+                <InlineCode>yarn install</InlineCode>
+                <br />
+                After installing, type this command and start with vite
+                <InlineCode>yarn dev</InlineCode>
+                <br />
+                After installing, type this command and start backend server
+                <InlineCode>yarn server</InlineCode>
+              </Text>
+              <Heading as="h3" className="mt-8 mb-4">
+                3. Let's start developing !!
+              </Heading>
+              <Text className="text-lg">
+                You finally got everything you need to start developing.
+                <br />
+                Enjoy your development life!!
+              </Text>
+            </div>
+          </Container>
+        </div>
         <Container>
           <Heading as="h1" className="mt-32 mb-8 text-primary">
             First customize you should do

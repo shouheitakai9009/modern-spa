@@ -15,7 +15,7 @@ export const Text = ({
     <p
       className={cn(
         isLink ? "!text-primary underline" : "text-secondary-foreground",
-        "leading-7 [&:not(:first-child)]:mt-1",
+        "leading-7 [&:not(:first-child)]:mt-1 break-all",
         className
       )}
       {...props}
