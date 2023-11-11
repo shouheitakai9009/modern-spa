@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "dev": "cd frontend && yarn dev",
+    "build": "cd frontend && yarn build",
     "server": "cd backend && yarn start",
     "server:watch": "cd backend && yarn start:dev"
   }

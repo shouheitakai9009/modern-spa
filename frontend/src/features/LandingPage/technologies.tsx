@@ -3,7 +3,8 @@ import { TechnologyCardType } from "./technology-card";
 export const technologies: TechnologyCardType[] = [
   {
     name: "Prisma",
-    badge: "ORM",
+    mainTag: "ORM",
+    tags: ["Backend"],
     image: "/images/part_prisma.png",
     link: "https://www.prisma.io/docs/guides",
     description: (
@@ -16,7 +17,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "NestJS",
-    badge: "Server framework",
+    mainTag: "Server framework",
+    tags: ["Backend"],
     image: "/images/part_nestjs.png",
     link: "https://nestjs.com/",
     description: (
@@ -30,7 +32,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "Monorepo",
-    badge: "Repository",
+    mainTag: "Repository",
+    tags: ["Build", "Other"],
     image: "/images/part_monorepo.png",
     link: "https://github.com/shouheitakai9009/modern-spa/blob/main/package.json",
     description: (
@@ -44,14 +47,16 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "Vite",
-    badge: "Build tool",
+    mainTag: "Build tool",
+    tags: ["Build", "Frontend"],
     image: "/images/part_vite.png",
     link: "https://vitejs.dev/",
     description: <></>,
   },
   {
     name: "Recoil",
-    badge: "Global state management",
+    mainTag: "Global state management",
+    tags: ["Frontend", "State"],
     image: "/images/part_recoil.png",
     link: "https://recoiljs.org/",
     description: (
@@ -64,7 +69,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "TanStack Query",
-    badge: "API caching",
+    mainTag: "API caching",
+    tags: ["Frontend", "State"],
     image: "/images/part_rq.png",
     link: "https://tanstack.com/query/v3/",
     description: (
@@ -77,7 +83,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "Storybook",
-    badge: "UI testing",
+    mainTag: "UI testing",
+    tags: ["Frontend", "Testing"],
     image: "/images/part_storybook.jpg",
     link: "https://storybook.js.org/",
     description: (
@@ -90,7 +97,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "Vitest",
-    badge: "Unit testing",
+    mainTag: "Unit testing",
+    tags: ["Frontend", "Testing"],
     image: "/images/part_vitest.svg",
     link: "https://vitest.dev/",
     description: (
@@ -102,7 +110,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "@shadcn/ui",
-    badge: "Component library",
+    mainTag: "Component library",
+    tags: ["Frontend", "Styling"],
     image: "/images/part_mocking.png",
     link: "https://ui.shadcn.com/docs",
     description: (
@@ -114,7 +123,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "Tailwind CSS",
-    badge: "Styling",
+    mainTag: "Styling",
+    tags: ["Styling"],
     image: "/images/part_tailwind.webp",
     link: "https://tailwindcss.com/",
     description: (
@@ -127,7 +137,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "Lucide",
-    badge: "Icons",
+    mainTag: "Icons",
+    tags: ["Styling"],
     image: "/images/part_lucide.png",
     link: "https://tailwindcss.com/",
     description: (
@@ -141,7 +152,8 @@ export const technologies: TechnologyCardType[] = [
   },
   {
     name: "Framer Motion",
-    badge: "Animation",
+    mainTag: "Animation",
+    tags: ["Styling"],
     image: "/images/part_framer.webp",
     link: "https://www.framer.com/motion/",
     description: (

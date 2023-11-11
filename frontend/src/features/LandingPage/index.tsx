@@ -7,13 +7,24 @@ import { cn } from "@/utils";
 import { Container } from "@/components/common/Container";
 import { Switch } from "@/components/common/Switch";
 import { Label } from "@/components/common/Label";
-import { useId, useRef } from "react";
+import { useId, useRef, useState } from "react";
 import { useTheme } from "@/components/theme-provider";
-import { TechnologyCard } from "./technology-card";
+import {
+  TechnologyCard,
+  TechnologyCardType,
+  TechnologyTag,
+  tagKinds,
+} from "./technology-card";
 import { Variants, motion, useInView } from "framer-motion";
 import TypingAnimation from "@/components/animations/typing";
 import { technologies } from "./technologies";
 import { InlineCode } from "@/components/common/InlineCode";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/common/Tabs/tabs";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -31,12 +42,28 @@ export const LandingPage = () => {
   const isInViewTechnology = useInView(technologyRef);
   const darkModeId = useId();
 
+  const [filteredTechnologies, setFilteredTechnologies] =
+    useState<TechnologyCardType[]>(technologies);
+
   const onChangeDarkMode = (checked: boolean) => {
     if (checked) {
       setTheme("dark");
     } else {
       setTheme("light");
     }
+  };
+
+  const onClickFilterTechnologies = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const { textContent } = e.target as HTMLButtonElement;
+    if (textContent === "All") {
+      setFilteredTechnologies(technologies);
+      return;
+    }
+    setFilteredTechnologies(
+      technologies.filter((t) => t.tags.includes(textContent as TechnologyTag))
+    );
   };
   return (
     <>
@@ -148,25 +175,69 @@ export const LandingPage = () => {
               Fullstack Javascripter
             </Heading>
           </Container>
-          {isInViewTechnology && (
-            <motion.div
-              className="flex flex-col flex-wrap justify-center md:gap-3 md:!flex-row"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              {technologies.map((technology, key) => (
-                <TechnologyCard
-                  key={key}
-                  name={technology.name}
-                  badge={technology.badge}
-                  image={technology.image}
-                  link={technology.link}
-                  description={technology.description}
-                />
-              ))}
-            </motion.div>
-          )}
+          <Tabs
+            defaultValue="All"
+            className="w-full flex flex-col items-center justify-center"
+          >
+            <Container className="flex justify-center">
+              <TabsList className="grid w-full grid-cols-8">
+                <TabsTrigger value="All" onClick={onClickFilterTechnologies}>
+                  All
+                </TabsTrigger>
+                {tagKinds.map((tag) => (
+                  <TabsTrigger value={tag} onClick={onClickFilterTechnologies}>
+                    {tag}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Container>
+            <TabsContent value="All" className="pt-8">
+              {isInViewTechnology && (
+                <motion.div
+                  className="flex flex-col flex-wrap justify-center md:gap-3 md:!flex-row"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {filteredTechnologies.map((technology, key) => (
+                    <TechnologyCard
+                      key={key}
+                      name={technology.name}
+                      mainTag={technology.mainTag}
+                      tags={technology.tags}
+                      image={technology.image}
+                      link={technology.link}
+                      description={technology.description}
+                    />
+                  ))}
+                </motion.div>
+              )}
+            </TabsContent>
+            {tagKinds.map((tag) => (
+              <TabsContent value={tag} className="pt-8">
+                {isInViewTechnology && (
+                  <motion.div
+                    className="flex flex-col flex-wrap justify-center md:gap-3 md:!flex-row"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {filteredTechnologies.map((technology, key) => (
+                      <TechnologyCard
+                        key={key}
+                        name={technology.name}
+                        mainTag={technology.mainTag}
+                        tags={technology.tags}
+                        image={technology.image}
+                        link={technology.link}
+                        description={technology.description}
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
         {/* Installation */}
         <div className="w-full flex flex-col md:items-center">

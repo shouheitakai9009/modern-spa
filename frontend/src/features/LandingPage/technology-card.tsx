@@ -12,10 +12,30 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/common/Badge";
 
+export type TechnologyTag =
+  | "State"
+  | "Frontend"
+  | "Backend"
+  | "Testing"
+  | "Styling"
+  | "Build"
+  | "Other";
+
+export const tagKinds = [
+  "State",
+  "Frontend",
+  "Backend",
+  "Testing",
+  "Styling",
+  "Build",
+  "Other",
+] as const;
+
 export type TechnologyCardType = {
   name: string;
   image: string;
-  badge: string;
+  mainTag: string;
+  tags: TechnologyTag[];
   description: JSX.Element;
   link: string;
 };
@@ -34,11 +54,18 @@ export const TechnologyCard = (props: TechnologyCardType) => {
     >
       <Card className="sm:w-full md:max-w-[350px] mb-4">
         <CardHeader>
-          <CardTitle className="flex items-center">
-            {props.name}
-            <Badge className="ml-2">{props.badge}</Badge>
+          <CardTitle className="flex flex-col">
+            <div>{props.name}</div>
+            <div className="mt-2 flex flex-wrap items-center">
+              <Badge className="mr-1">{props.mainTag}</Badge>
+              {props.tags.map((tag) => (
+                <Badge variant="outline" className="mr-1">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
           </CardTitle>
-          <CardDescription className="h-20">
+          <CardDescription className="h-20 py-2">
             {props.description}
           </CardDescription>
         </CardHeader>
