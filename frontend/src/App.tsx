@@ -1,36 +1,28 @@
-import { Theme } from "@radix-ui/themes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LandingLayout } from "./components/LandingLayout";
-import { ShouheiPage } from "./features/TestPage";
 import { LandingPage } from "./features/LandingPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { RecoilRoot } from "recoil";
+import { ThemeProvider } from "./components/theme-provider";
 
 function App() {
   const queryClient = new QueryClient();
   return (
-    // You can copy the theme configuration by https://www.radix-ui.com/themes/playground
-    <Theme
-      accentColor="purple"
-      panelBackground="solid"
-      radius="large"
-      appearance="light"
-    >
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LandingLayout />}>
                 <Route path="/" index element={<LandingPage />} />
-                <Route path="/test" element={<ShouheiPage />} />
               </Route>
             </Routes>
           </BrowserRouter>
           {import.meta.env.DEV && <ReactQueryDevtools />}
         </QueryClientProvider>
       </RecoilRoot>
-    </Theme>
+    </ThemeProvider>
   );
 }
 
