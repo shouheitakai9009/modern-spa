@@ -69,8 +69,7 @@ export const LandingPage = () => {
     <>
       {/* Setting dark mode */}
       <header className="h-[100vh] md:h-[600px] px-6 bg-gradient-to-tr from-orange-600 to-purple-500">
-        <div className="h-20 flex items-center justify-between">
-          <Github color="white" size="40" />
+        <div className="h-20 flex items-center justify-end">
           <div className="flex items-center">
             <Label htmlFor={darkModeId} className="text-white">
               Dark mode
@@ -83,7 +82,12 @@ export const LandingPage = () => {
           </div>
         </div>
         {/* First view area */}
-        <div className={cn("flex justify-center items-center flex-col h-full")}>
+        <div
+          className={cn(
+            "flex justify-center items-center flex-col h-[calc(100%-5rem)]"
+          )}
+        >
+          <img src="/images/icon.png" className="w-20 mb-10" />
           <Heading as="h1" className="text-white mb-4 !text-5xl md:!text-7xl">
             <TypingAnimation text="Modern SPA boilerplate" />
           </Heading>
