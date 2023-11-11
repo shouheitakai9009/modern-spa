@@ -84,17 +84,17 @@ export const LandingPage = () => {
         </div>
         {/* First view area */}
         <div className={cn("flex justify-center items-center flex-col h-full")}>
-          <Heading as="h1" className="text-white mb-4 !text-7xl">
+          <Heading as="h1" className="text-white mb-4 !text-5xl md:!text-7xl">
             <TypingAnimation text="Modern SPA boilerplate" />
           </Heading>
           <Text className="text-center text-white text-lg">
             <TypingAnimation
               delay={0.01}
-              text="This is the boilerplate that is a super practical and super fast development boilerplate for Javascripter."
+              text="Designed for JavaScript developers, the Modern SPA boilerplate offers rapid UI construction, easy setup, and high extensibility."
             />
             <TypingAnimation
               delay={0.01}
-              text="you will never get confused configuration using frontend and backend because the boilerplate is monorepo for javascripter."
+              text="It supports a monorepo approach for seamless full-stack development, enabling efficient and organized coding in JavaScript."
             />
           </Text>
           <section className="mt-20">
@@ -116,7 +116,7 @@ export const LandingPage = () => {
         {/* Builing user interface faster */}
         <Container>
           <Heading as="h1" className="mb-8 text-primary">
-            Faster building UI than all libraries
+            Ultra-Fast UI Building
           </Heading>
           <div className="flex flex-col md:!flex-row">
             <img
