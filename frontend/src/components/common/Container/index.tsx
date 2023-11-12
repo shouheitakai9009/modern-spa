@@ -1,4 +1,4 @@
-import { cn } from "@/utils";
+import { cn } from "@/utils/classnames";
 import { PropsWithChildren } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 
@@ -23,6 +23,7 @@ export const Container = ({
       className={cn(styledSize, className)}
       initial={{ opacity: 0, translateX: -100 }}
       whileInView={{ opacity: 1, translateX: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 1 }}
       {...props}
     >

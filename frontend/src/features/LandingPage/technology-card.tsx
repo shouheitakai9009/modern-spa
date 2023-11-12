@@ -7,7 +7,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/common/Card";
-import { cn } from "@/utils";
+import { cn } from "@/utils/classnames";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/common/Badge";
@@ -51,6 +51,7 @@ export const TechnologyCard = (props: TechnologyCardType) => {
       variants={itemVariants}
       transition={{ duration: 1 }}
       initial={{ opacity: 0, translateX: -100 }}
+      viewport={{ once: true }}
     >
       <Card className="sm:w-full md:max-w-[350px] mb-4">
         <CardHeader>

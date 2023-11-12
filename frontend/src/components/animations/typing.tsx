@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-interface TypingAnimationProps {
+interface TypingAnimationProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;
   delay?: number;
 }
@@ -9,6 +9,7 @@ interface TypingAnimationProps {
 const TypingAnimation: React.FC<TypingAnimationProps> = ({
   text,
   delay = 0.07,
+  ...props
 }) => {
   const characters = Array.from(text);
 
@@ -23,7 +24,7 @@ const TypingAnimation: React.FC<TypingAnimationProps> = ({
   };
 
   return (
-    <div>
+    <div {...props}>
       {characters.map((char, index) => (
         <motion.span
           key={index}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { buttonVariants } from "@/components/common/Button";
 import { Text } from "@/components/common/Text";
 import { Heading } from "@/components/common/Heading";
-import { cn } from "@/utils";
+import { cn } from "@/utils/classnames";
 import { Container } from "@/components/common/Container";
 import { Switch } from "@/components/common/Switch";
 import { Label } from "@/components/common/Label";
@@ -65,10 +65,11 @@ export const LandingPage = () => {
       technologies.filter((t) => t.tags.includes(textContent as TechnologyTag))
     );
   };
+
   return (
     <>
       {/* Setting dark mode */}
-      <header className="h-[100vh] md:h-[600px] px-6 bg-gradient-to-tr from-orange-600 to-purple-500">
+      <header className="h-[100vh] md:h-[700px] px-6 bg-gradient-to-tr from-orange-600 to-purple-500">
         <div className="h-20 flex items-center justify-end">
           <div className="flex items-center">
             <Label htmlFor={darkModeId} className="text-white">
@@ -89,7 +90,10 @@ export const LandingPage = () => {
         >
           <img src="/images/icon.png" className="w-20 mb-10" />
           <Heading as="h1" className="text-white mb-4 !text-5xl md:!text-7xl">
-            <TypingAnimation text="Modern SPA boilerplate" />
+            <TypingAnimation
+              text="Modern SPA boilerplate"
+              className="text-center"
+            />
           </Heading>
           <Text className="text-center text-white text-lg">
             <TypingAnimation
@@ -181,7 +185,7 @@ export const LandingPage = () => {
           </Container>
           <Tabs
             defaultValue="All"
-            className="w-full flex flex-col items-center justify-center"
+            className="w-full flex-col items-center justify-center flex"
           >
             <Container className="flex justify-center">
               <TabsList className="grid w-full grid-cols-8">
@@ -196,26 +200,26 @@ export const LandingPage = () => {
               </TabsList>
             </Container>
             <TabsContent value="All" className="pt-8">
-              {isInViewTechnology && (
-                <motion.div
-                  className="flex flex-col flex-wrap justify-center md:gap-3 md:!flex-row"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {filteredTechnologies.map((technology, key) => (
-                    <TechnologyCard
-                      key={key}
-                      name={technology.name}
-                      mainTag={technology.mainTag}
-                      tags={technology.tags}
-                      image={technology.image}
-                      link={technology.link}
-                      description={technology.description}
-                    />
-                  ))}
-                </motion.div>
-              )}
+              <motion.div
+                className="flex flex-col flex-wrap justify-center md:gap-3 md:!flex-row"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                {filteredTechnologies.map((technology, key) => (
+                  <TechnologyCard
+                    key={key}
+                    name={technology.name}
+                    mainTag={technology.mainTag}
+                    tags={technology.tags}
+                    image={technology.image}
+                    link={technology.link}
+                    description={technology.description}
+                  />
+                ))}
+              </motion.div>
             </TabsContent>
             {tagKinds.map((tag) => (
               <TabsContent value={tag} className="pt-8">

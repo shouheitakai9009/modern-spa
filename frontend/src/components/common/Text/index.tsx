@@ -1,4 +1,4 @@
-import { cn } from "@/utils";
+import { cn } from "@/utils/classnames";
 import { PropsWithChildren } from "react";
 
 interface TypographyProps
