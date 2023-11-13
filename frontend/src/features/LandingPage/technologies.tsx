@@ -140,7 +140,7 @@ export const technologies: TechnologyCardType[] = [
     mainTag: "Icons",
     tags: ["Styling"],
     image: "/images/part_lucide.png",
-    link: "https://tailwindcss.com/",
+    link: "https://lucide.dev/",
     description: (
       <>
         Icons are lightweight, highly optimized scalable vector graphics (SVG).

@@ -1,14 +1,10 @@
-import { Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { buttonVariants } from "@/components/common/Button";
 import { Text } from "@/components/common/Text";
 import { Heading } from "@/components/common/Heading";
 import { cn } from "@/utils/classnames";
 import { Container } from "@/components/common/Container";
-import { Switch } from "@/components/common/Switch";
-import { Label } from "@/components/common/Label";
-import { useId, useRef, useState } from "react";
-import { useTheme } from "@/components/theme-provider";
+import { useRef, useState } from "react";
 import {
   TechnologyCard,
   TechnologyCardType,
@@ -16,7 +12,6 @@ import {
   tagKinds,
 } from "./technology-card";
 import { Variants, motion, useInView } from "framer-motion";
-import TypingAnimation from "@/components/animations/typing";
 import { technologies } from "./technologies";
 import { InlineCode } from "@/components/common/InlineCode";
 import {
@@ -25,6 +20,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/common/Tabs/tabs";
+import { DarkModeSwitcher } from "./dark-mode-switcher";
+import { FirstViewArea } from "./first-view-area";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -37,21 +34,11 @@ const containerVariants: Variants = {
 };
 
 export const LandingPage = () => {
-  const { setTheme } = useTheme();
   const technologyRef = useRef(null);
   const isInViewTechnology = useInView(technologyRef);
-  const darkModeId = useId();
 
   const [filteredTechnologies, setFilteredTechnologies] =
     useState<TechnologyCardType[]>(technologies);
-
-  const onChangeDarkMode = (checked: boolean) => {
-    if (checked) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
 
   const onClickFilterTechnologies = (
     e: React.MouseEvent<HTMLButtonElement>
@@ -68,57 +55,9 @@ export const LandingPage = () => {
 
   return (
     <>
-      {/* Setting dark mode */}
       <header className="h-[100vh] md:h-[700px] px-6 bg-gradient-to-tr from-orange-600 to-purple-500">
-        <div className="h-20 flex items-center justify-end">
-          <div className="flex items-center">
-            <Label htmlFor={darkModeId} className="text-white">
-              Dark mode
-            </Label>
-            <Switch
-              id={darkModeId}
-              onCheckedChange={onChangeDarkMode}
-              className="ml-2"
-            />
-          </div>
-        </div>
-        {/* First view area */}
-        <div
-          className={cn(
-            "flex justify-center items-center flex-col h-[calc(100%-5rem)]"
-          )}
-        >
-          <img src="/images/icon.png" className="w-20 mb-10" />
-          <Heading as="h1" className="text-white mb-4 !text-5xl md:!text-7xl">
-            <TypingAnimation
-              text="Modern SPA boilerplate"
-              className="text-center"
-            />
-          </Heading>
-          <Text className="text-center text-white text-lg">
-            <TypingAnimation
-              delay={0.01}
-              text="Designed for JavaScript developers, the Modern SPA boilerplate offers rapid UI construction, easy setup, and high extensibility."
-            />
-            <TypingAnimation
-              delay={0.01}
-              text="It supports a monorepo approach for seamless full-stack development, enabling efficient and organized coding in JavaScript."
-            />
-          </Text>
-          <section className="mt-20">
-            <Link
-              to="https://github.com/shouheitakai9009/modern-spa"
-              target="_blank"
-              className={cn(
-                "shadow-lg",
-                buttonVariants({ size: "lg", variant: "default" })
-              )}
-            >
-              <Github size={20} className="mr-2" />
-              Get Standard
-            </Link>
-          </section>
-        </div>
+        <DarkModeSwitcher />
+        <FirstViewArea />
       </header>
       <article className="flex flex-col items-center pt-20 pb-20 px-8 bg-secondary">
         {/* Builing user interface faster */}
