@@ -1,22 +1,22 @@
-import { cn } from "@/utils/classnames";
-import { PropsWithChildren } from "react";
-import { HTMLMotionProps, motion } from "framer-motion";
+import { cn } from '@/utils/classnames';
+import { PropsWithChildren } from 'react';
+import { HTMLMotionProps, motion } from 'framer-motion';
 
 const SIZE = {
-  sm: "sm:w-full",
-  md: "md:w-full",
-  lg: "lg:w-[1080px]",
-  xl: "xl:w-[1080px]",
+  sm: 'sm:w-full',
+  md: 'md:w-full',
+  lg: 'lg:w-[1080px]',
+  xl: 'xl:w-[1080px]',
 };
 
-interface ContainerProps extends PropsWithChildren<HTMLMotionProps<"div">> {}
+interface ContainerProps extends PropsWithChildren<HTMLMotionProps<'div'>> {}
 
 export const Container = ({
   children,
   className,
   ...props
 }: ContainerProps) => {
-  const styledSize = Object.values(SIZE).join(" ");
+  const styledSize = Object.values(SIZE).join(' ');
 
   return (
     <motion.div

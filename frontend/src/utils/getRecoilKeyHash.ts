@@ -3,7 +3,7 @@ type RecoilKeysHash<T extends ReadonlyArray<string>> = {
 };
 
 export const getRecoilKeyHash = <T extends readonly string[]>(
-  keys: T
+  keys: T,
 ): RecoilKeysHash<T> =>
   keys.reduce((obj, key) => {
     obj[key as T[number]] = key;

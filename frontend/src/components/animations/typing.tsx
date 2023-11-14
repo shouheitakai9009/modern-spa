@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface TypingAnimationProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;

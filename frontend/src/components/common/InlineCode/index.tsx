@@ -1,5 +1,5 @@
-import { cn } from "@/utils/classnames";
-import { PropsWithChildren } from "react";
+import { cn } from '@/utils/classnames';
+import { PropsWithChildren } from 'react';
 
 interface InlineCodeProps
   extends PropsWithChildren<React.HTMLAttributes<HTMLElement>> {}
@@ -12,8 +12,8 @@ export const InlineCode = ({
   return (
     <code
       className={cn(
-        "mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
-        className
+        'mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
+        className,
       )}
       {...props}
     >

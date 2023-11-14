@@ -1,16 +1,16 @@
-import TypingAnimation from "@/components/animations/typing";
-import { buttonVariants } from "@/components/common/Button";
-import { Heading } from "@/components/common/Heading";
-import { Text } from "@/components/common/Text";
-import { cn } from "@/utils/classnames";
-import { Github } from "lucide-react";
-import { Link } from "react-router-dom";
+import TypingAnimation from '@/components/animations/typing';
+import { buttonVariants } from '@/components/common/Button';
+import { Heading } from '@/components/common/Heading';
+import { Text } from '@/components/common/Text';
+import { cn } from '@/utils/classnames';
+import { Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const FirstViewArea = () => {
   return (
     <div
       className={cn(
-        "flex justify-center items-center flex-col h-[calc(100%-5rem)]"
+        'flex justify-center items-center flex-col h-[calc(100%-5rem)]',
       )}
     >
       <img src="/images/icon.png" className="w-20 mb-10" />
@@ -35,8 +35,8 @@ export const FirstViewArea = () => {
           to="https://github.com/shouheitakai9009/modern-spa"
           target="_blank"
           className={cn(
-            "shadow-lg",
-            buttonVariants({ size: "lg", variant: "default" })
+            'shadow-lg',
+            buttonVariants({ size: 'lg', variant: 'default' }),
           )}
         >
           <Github size={20} className="mr-2" />

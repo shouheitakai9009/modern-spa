@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/components/common/Button";
+import { buttonVariants } from '@/components/common/Button';
 import {
   Card,
   CardHeader,
@@ -6,29 +6,29 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/common/Card";
-import { cn } from "@/utils/classnames";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Badge } from "@/components/common/Badge";
+} from '@/components/common/Card';
+import { cn } from '@/utils/classnames';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Badge } from '@/components/common/Badge';
 
 export type TechnologyTag =
-  | "State"
-  | "Frontend"
-  | "Backend"
-  | "Testing"
-  | "Styling"
-  | "Build"
-  | "Other";
+  | 'State'
+  | 'Frontend'
+  | 'Backend'
+  | 'Testing'
+  | 'Styling'
+  | 'Build'
+  | 'Other';
 
 export const tagKinds = [
-  "State",
-  "Frontend",
-  "Backend",
-  "Testing",
-  "Styling",
-  "Build",
-  "Other",
+  'State',
+  'Frontend',
+  'Backend',
+  'Testing',
+  'Styling',
+  'Build',
+  'Other',
 ] as const;
 
 export type TechnologyCardType = {
@@ -81,8 +81,8 @@ export const TechnologyCard = (props: TechnologyCardType) => {
             to={props.link}
             target="_blank"
             className={cn(
-              "w-full",
-              buttonVariants({ size: "lg", variant: "secondary" })
+              'w-full',
+              buttonVariants({ size: 'lg', variant: 'secondary' }),
             )}
           >
             View Documentation

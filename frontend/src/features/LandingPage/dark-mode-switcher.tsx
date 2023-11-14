@@ -1,16 +1,16 @@
-import { Label } from "@/components/common/Label";
-import { Switch } from "@/components/common/Switch";
-import { useTheme } from "@/components/theme-provider";
-import { useId } from "react";
+import { Label } from '@/components/common/Label';
+import { Switch } from '@/components/common/Switch';
+import { useTheme } from '@/components/theme-provider';
+import { useId } from 'react';
 
 export const DarkModeSwitcher = () => {
   const { theme, setTheme } = useTheme();
   const darkModeId = useId();
   const onChangeDarkMode = (checked: boolean) => {
     if (checked) {
-      setTheme("dark");
+      setTheme('dark');
     } else {
-      setTheme("light");
+      setTheme('light');
     }
   };
   return (

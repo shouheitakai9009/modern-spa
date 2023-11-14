@@ -1,5 +1,5 @@
-import { cn } from "@/utils/classnames";
-import { PropsWithChildren } from "react";
+import { cn } from '@/utils/classnames';
+import { PropsWithChildren } from 'react';
 
 interface TypographyProps
   extends PropsWithChildren<React.HTMLAttributes<HTMLParagraphElement>> {
@@ -14,9 +14,9 @@ export const Text = ({
   return (
     <p
       className={cn(
-        isLink ? "!text-primary underline" : "text-secondary-foreground",
-        "leading-7 [&:not(:first-child)]:mt-1 break-all",
-        className
+        isLink ? '!text-primary underline' : 'text-secondary-foreground',
+        'leading-7 [&:not(:first-child)]:mt-1 break-all',
+        className,
       )}
       {...props}
     >

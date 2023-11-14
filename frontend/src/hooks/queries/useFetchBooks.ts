@@ -1,7 +1,7 @@
-import { useQuery } from "react-query";
-import { API } from "../../apis";
+import { useQuery } from 'react-query';
+import { API } from '../../apis';
 
-export const fetchBooksKey = "fetchBooksKey";
+export const fetchBooksKey = 'fetchBooksKey';
 
 export const useFetchBooks = () =>
   useQuery([fetchBooksKey], {
