@@ -50,7 +50,7 @@ export const FullstackJavascripterSection = ({
       defaultValue="All"
       className="w-full flex-col items-center justify-center flex"
     >
-      <Container className="flex justify-center">
+      <Container className="flex justify-center" slideIn>
         <TabsList className="grid w-full grid-cols-8">
           <TabsTrigger value="All" onClick={onClickFilterTechnologies}>
             All

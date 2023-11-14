@@ -9,9 +9,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://www.prisma.io/docs/guides',
     description: (
       <>
-        You can use quickly and easily Prisma ORM with TypeScript.
-        <br />
-        Let's define schemas on backend/prisma/schema.prisma right now.
+        Streamlines database workflows with auto-generated queries, ensuring
+        efficient, type-safe database access.
       </>
     ),
   },
@@ -23,10 +22,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://nestjs.com/',
     description: (
       <>
-        This is the framework that is good compatibility with Prisma and made by
-        Node.js.
-        <br />
-        You can write a safe code more because NestJS supported Typescript.
+        Offers a robust backend framework with TypeScript, promoting clean,
+        scalable code architecture.
       </>
     ),
   },
@@ -38,10 +35,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://github.com/shouheitakai9009/modern-spa/blob/main/package.json',
     description: (
       <>
-        You don't need to build a difficult environment because this repository
-        apply mono-repo.
-        <br />
-        You can start developing frontend and backend quickly.
+        Centralizes code management, simplifying dependency tracking and
+        fostering unified project development.
       </>
     ),
   },
@@ -51,7 +46,12 @@ export const technologies: TechnologyCardType[] = [
     tags: ['Build', 'Frontend'],
     image: '/images/part_vite.png',
     link: 'https://vitejs.dev/',
-    description: <></>,
+    description: (
+      <>
+        Provides a fast, modern frontend tool with hot module replacement,
+        optimizing development and build times.
+      </>
+    ),
   },
   {
     name: 'Recoil',
@@ -61,9 +61,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://recoiljs.org/',
     description: (
       <>
-        Implement persistence, routing, time-travel debugging, or undo by
-        observing all state changes across your app, without impairing
-        code-splitting.
+        Manages state globally in React apps with simplicity and performance,
+        improving state management.
       </>
     ),
   },
@@ -75,9 +74,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://tanstack.com/query/v3/',
     description: (
       <>
-        TanStack Query gives you declarative, always-up-to-date auto-managed
-        queries and mutations that directly improve both your developer and user
-        experiences.
+        Simplifies data fetching, caching, and state synchronization, enhancing
+        server-state management.
       </>
     ),
   },
@@ -89,9 +87,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://storybook.js.org/',
     description: (
       <>
-        Storybook is a frontend workshop for building UI components and pages in
-        isolation. Thousands of teams use it for UI development, testing, and
-        documentation. It's open source and free.
+        Isolates components, enabling interactive UI development and testing,
+        fostering better component design.
       </>
     ),
   },
@@ -103,8 +100,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://vitest.dev/',
     description: (
       <>
-        Reuse Vite's config and plugins - consistent across your app and tests.
-        But it's not required to use Vitest!
+        A fast unit-testing framework optimized for Vite, ensuring reliable,
+        efficient JavaScript testing.
       </>
     ),
   },
@@ -116,8 +113,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://ui.shadcn.com/docs',
     description: (
       <>
-        Beautifully designed components that you can copy and paste into your
-        apps. Accessible. Customizable. Open Source.
+        Provides a collection of reusable UI components, speeding up UI
+        development with consistent design.
       </>
     ),
   },
@@ -129,9 +126,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://tailwindcss.com/',
     description: (
       <>
-        A utility-first CSS framework packed with classes like flex, pt-4,
-        text-center and rotate-90 that can be composed to build any design,
-        directly in your markup.
+        Facilitates rapid, responsive design with utility-first CSS, enhancing
+        styling productivity.
       </>
     ),
   },
@@ -143,10 +139,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://lucide.dev/',
     description: (
       <>
-        Icons are lightweight, highly optimized scalable vector graphics (SVG).
-        <br />
-        Designed with a strict set of design rules for consistency in style and
-        readability.
+        Offers a versatile icon library, enriching UIs with easily customizable
+        vector icons.
       </>
     ),
   },
@@ -158,8 +152,8 @@ export const technologies: TechnologyCardType[] = [
     link: 'https://www.framer.com/motion/',
     description: (
       <>
-        Complete documentation of the Framer Motion animation library. A
-        production-ready motion library for React.
+        Enables smooth, complex animations in React, enhancing UI interactivity
+        and user experience.
       </>
     ),
   },

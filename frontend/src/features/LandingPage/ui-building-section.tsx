@@ -37,7 +37,7 @@ const DescriptionItem = ({ title, description }: DescriptionItemProps) => (
 
 export const UiBuildingSection = () => {
   return (
-    <Container>
+    <Container slideIn>
       <Heading as="h1" className="mb-8 text-primary">
         Ultra-Fast UI Building
       </Heading>

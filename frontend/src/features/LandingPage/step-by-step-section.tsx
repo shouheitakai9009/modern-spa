@@ -14,7 +14,7 @@ interface DescriptionItemProps {
 
 export const StepByStepSection = ({ title, steps }: DescriptionItemProps) => {
   return (
-    <Container>
+    <Container slideIn>
       <Heading as="h1" className="mt-24 mb-8 text-primary">
         {title}
       </Heading>

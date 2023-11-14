@@ -3,7 +3,7 @@ import { buttonVariants } from '@/components/common/Button';
 import { Heading } from '@/components/common/Heading';
 import { Text } from '@/components/common/Text';
 import { cn } from '@/utils/classnames';
-import { Github } from 'lucide-react';
+import { BookOpen, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const FirstViewArea = () => {
@@ -30,7 +30,14 @@ export const FirstViewArea = () => {
           text="It supports a monorepo approach for seamless full-stack development, enabling efficient and organized coding in JavaScript."
         />
       </Text>
-      <section className="mt-20">
+      <section className="mt-20 gap-2 flex items-center">
+        <Link
+          to="/demo"
+          className={cn('shadow-lg', buttonVariants({ variant: 'secondary' }))}
+        >
+          <BookOpen size={16} className="mr-2" />
+          View Demo
+        </Link>
         <Link
           to="https://github.com/shouheitakai9009/modern-spa"
           target="_blank"

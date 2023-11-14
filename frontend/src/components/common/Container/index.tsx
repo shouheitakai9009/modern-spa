@@ -9,25 +9,30 @@ const SIZE = {
   xl: 'xl:w-[1080px]',
 };
 
-interface ContainerProps extends PropsWithChildren<HTMLMotionProps<'div'>> {}
+interface ContainerProps extends PropsWithChildren<HTMLMotionProps<'div'>> {
+  slideIn?: boolean;
+}
 
 export const Container = ({
   children,
   className,
+  slideIn = false,
   ...props
 }: ContainerProps) => {
   const styledSize = Object.values(SIZE).join(' ');
 
   return (
-    <motion.div
-      className={cn(styledSize, className)}
-      initial={{ opacity: 0, translateX: -100 }}
-      whileInView={{ opacity: 1, translateX: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1 }}
-      {...props}
-    >
-      {children}
-    </motion.div>
+    <div className="w-full flex justify-center">
+      <motion.div
+        className={cn(styledSize, className)}
+        initial={slideIn ? { opacity: 0, translateX: -100 } : {}}
+        whileInView={slideIn ? { opacity: 1, translateX: 0 } : {}}
+        viewport={{ once: true }}
+        transition={slideIn ? { duration: 1 } : {}}
+        {...props}
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 };

@@ -5,7 +5,7 @@ import { Container } from '@/components/common/Container';
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { InlineCode } from '@/components/common/InlineCode';
-import { DarkModeSwitcher } from './dark-mode-switcher';
+import { DarkModeSwitcher } from '../../components/common/DarkModeSwitcher';
 import { FirstViewArea } from './first-view-area';
 import { UiBuildingSection } from './ui-building-section';
 import { FullstackJavascripterSection } from './fullstack-javascripter-section';
@@ -18,7 +18,7 @@ export const LandingPage = () => {
   return (
     <>
       <header className="h-[100vh] md:h-[700px] px-6 bg-gradient-to-tr from-orange-600 to-purple-500">
-        <DarkModeSwitcher />
+        <DarkModeSwitcher alwaysTextWhite />
         <FirstViewArea />
       </header>
       <article className="flex flex-col items-center pt-20 pb-20 px-8 bg-secondary">
@@ -27,7 +27,7 @@ export const LandingPage = () => {
           className="w-full flex flex-col md:items-center"
           ref={technologyRef}
         >
-          <Container>
+          <Container slideIn>
             <Heading as="h1" className="mt-32 mb-8 text-primary">
               Fullstack Javascripter
             </Heading>
