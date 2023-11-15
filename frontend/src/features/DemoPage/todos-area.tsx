@@ -1,50 +1,94 @@
-import { Heading } from '@/components/common/Heading';
-import { Label } from '@/components/common/Label';
+import { Checkbox } from '@/components/common/Checkbox';
 import {
-  RadioGroup,
-  RadioGroupItem,
-} from '@/components/common/RadioGroup/radio-group';
-import { Text } from '@/components/common/Text';
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/common/Table';
+import { useState } from 'react';
+
+interface TodoItem {
+  checked: boolean;
+  cateogory: 'work' | 'private';
+  todo: string;
+  createdAt: string;
+}
+
+const defaultTodos: TodoItem[] = [
+  {
+    checked: true,
+    cateogory: 'work',
+    todo: 'will remember how to use effect',
+    createdAt: '2023-11-16',
+  },
+  {
+    checked: false,
+    cateogory: 'work',
+    todo: 'styling an English app using @shadcn/ui',
+    createdAt: '2023-11-17',
+  },
+  {
+    checked: false,
+    cateogory: 'private',
+    todo: 'Trip the U.S with my wife',
+    createdAt: '2023-11-17',
+  },
+  {
+    checked: false,
+    cateogory: 'private',
+    todo: 'Go to a shopping mole with my baby',
+    createdAt: '2023-11-17',
+  },
+];
 
 export const TodosArea = () => {
+  const [todos, setTodos] = useState<TodoItem[]>(defaultTodos);
+
+  const onCheckedChange = (todo: TodoItem, checked: boolean | string) => {
+    setTodos(
+      todos.map((t) => {
+        if (t.todo === todo.todo) {
+          return {
+            ...t,
+            checked: checked as boolean,
+          };
+        }
+        return t;
+      }),
+    );
+  };
+
   return (
     <div>
-      <Heading as="h4" className="mb-4">
-        Libraries you use
-      </Heading>
-      <Text className="font-bold mb-2">Framework</Text>
-      <RadioGroup className="flex flex-wrap mb-5">
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="react" id="react" />
-          <Label htmlFor="react">React</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="nestjs" id="nestjs" />
-          <Label htmlFor="nestjs">NestJS</Label>
-        </div>
-      </RadioGroup>
-      <Text className="font-bold mb-2">Testing</Text>
-      <RadioGroup className="flex flex-wrap mb-5">
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="vitest" id="vitest" />
-          <Label htmlFor="vitest">Vitest</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="storybook" id="storybook" />
-          <Label htmlFor="storybook">Storybook</Label>
-        </div>
-      </RadioGroup>
-      <Text className="font-bold mb-2">State management</Text>
-      <RadioGroup className="flex flex-wrap mb-5">
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="recoil" id="recoil" />
-          <Label htmlFor="recoil">Recoil</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="reactquery" id="reactquery" />
-          <Label htmlFor="reactquery">Tanstack Query</Label>
-        </div>
-      </RadioGroup>
+      <Table>
+        <TableCaption>Todos will archive parts of your life</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead></TableHead>
+            <TableHead>Category</TableHead>
+            <TableHead>Todo</TableHead>
+            <TableHead>Created</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {todos.map((todo) => (
+            <TableRow key={todo.todo}>
+              <TableCell>
+                <Checkbox
+                  checked={todo.checked}
+                  onCheckedChange={(checked) => onCheckedChange(todo, checked)}
+                />
+              </TableCell>
+              <TableCell>{todo.cateogory}</TableCell>
+              <TableCell>{todo.todo}</TableCell>
+              <TableCell>{todo.createdAt}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };
